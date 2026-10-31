@@ -10,8 +10,19 @@ class Laporan extends Model
 
     protected $fillable = [
         'nama_pelapor',
+        'no_hp',
         'lokasi',
-        'tinggi_genangan',
-        'tanggal_kejadian',
+        'kecamatan',
+        'tinggi_air',
+        'keterangan',
+        'foto',
+        'status',
     ];
+
+    protected function casts(): array
+    {
+        return [
+            'tinggi_air' => 'integer',
+        ];
+    }
 }

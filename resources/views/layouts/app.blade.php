@@ -16,22 +16,23 @@
         footer { background: #0f172a; color: #94a3b8; text-align: center; padding: 14px; font-size: 14px; }
         .box { background: #fff; border-radius: 8px; padding: 20px; box-shadow: 0 1px 3px rgba(0,0,0,.1); }
         label { display: block; margin: 12px 0 4px; font-weight: bold; }
-        input { width: 100%; padding: 9px; border: 1px solid #cbd5e1; border-radius: 6px; }
+        input, textarea, select { width: 100%; padding: 9px; border: 1px solid #cbd5e1; border-radius: 6px; font: inherit; }
+        textarea { min-height: 100px; resize: vertical; }
         .error { color: #b91c1c; font-size: 13px; margin-top: 4px; }
         .btn { margin-top: 16px; background: #0b4f8a; color: #fff; border: 0; padding: 10px 20px; border-radius: 6px; cursor: pointer; text-decoration: none; display: inline-block; }
         .alert { padding: 12px 16px; border-radius: 6px; margin-bottom: 16px; }
         .alert-success { background: #dcfce7; color: #166534; border: 1px solid #86efac; }
         .alert-info { background: #dbeafe; color: #1e40af; border: 1px solid #93c5fd; }
-        .card { background: #fff; border-radius: 8px; padding: 16px; margin-bottom: 14px; box-shadow: 0 1px 3px rgba(0,0,0,.1); border-left: 6px solid #94a3b8; }
-        .card h3 { margin: 0 0 6px; }
-        .card p { margin: 3px 0; }
-        .card.waspada { border-left-color: #eab308; }
-        .card.siaga { border-left-color: #f97316; }
-        .card.awas { border-left-color: #dc2626; }
-        .badge { display: inline-block; padding: 3px 10px; border-radius: 999px; color: #fff; font-size: 13px; font-weight: bold; }
-        .badge.waspada { background: #eab308; }
-        .badge.siaga { background: #f97316; }
-        .badge.awas { background: #dc2626; }
+        .table-wrap { overflow-x: auto; background: #fff; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,.1); }
+        table { border-collapse: collapse; width: 100%; }
+        th, td { padding: 10px; text-align: left; border-bottom: 1px solid #e2e8f0; vertical-align: middle; }
+        .thumbnail { width: 76px; height: 58px; object-fit: cover; border-radius: 4px; }
+        .badge { display: inline-block; padding: 3px 10px; border-radius: 999px; color: #fff; font-size: 13px; font-weight: bold; background: #64748b; }
+        .badge.diproses { background: #f97316; }
+        .badge.selesai { background: #16a34a; }
+        .actions { white-space: nowrap; }
+        .pagination { display: flex; gap: 8px; list-style: none; padding: 0; margin-top: 16px; }
+        .pagination a, .pagination span { display: inline-block; padding: 6px 10px; background: #fff; border-radius: 4px; text-decoration: none; color: #0b4f8a; }
         table.detail td { padding: 6px 12px 6px 0; }
         nav{display:flex}nav form{display:flex;margin:0}nav button{background:none;border:0;color:#cfe3f7;padding:12px 16px;cursor:pointer;font:inherit}nav button:hover{background:#0b4f8a;color:#fff}
     </style>
@@ -61,6 +62,12 @@
 </nav>
 
     <main>
+        @if (session('success'))
+            <x-alert type="success">{{ session('success') }}</x-alert>
+        @endif
+        @if (session('status'))
+            <x-alert type="info">{{ session('status') }}</x-alert>
+        @endif
         @yield('content')
     </main>
 

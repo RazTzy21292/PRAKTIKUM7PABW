@@ -20,7 +20,7 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-    Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan.index');
+    Route::resource('laporan', LaporanController::class)->except(['create', 'store']);
     Route::get('/profil', [ProfilController::class, 'show'])->name('profil');
     Route::post('/logout', [LoginController::class, 'destroy'])->name('logout');
 });
